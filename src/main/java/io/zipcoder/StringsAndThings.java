@@ -15,7 +15,15 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+        int yz = 0;
+        String[] words = input.split(" ");
+        for (String hold:words) {
+            if (hold.endsWith("y") || hold.endsWith("z")) {
+                yz ++;
+            }
+        }
+            return yz;
+
     }
 
     /**
@@ -28,7 +36,7 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+        return base.replace(remove,"");
     }
 
     /**
@@ -39,8 +47,20 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("This is notnot") // Should return true
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
-    public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+    public Boolean containsEqualNumberOfIsAndNot(String input) {
+        int is = 0;
+        int not = 0;
+        for (int i = 2; i <= input.length(); i++) {
+            if (input.substring(i - 2, i).equals("is")) {
+                is++;
+            }
+        }
+        for (int i = 3; i <= input.length(); i++) {
+            if (input.substring(i - 3, i).equals("not")) {
+                not++;
+            }
+
+        } return (not == is ? true : false);
     }
 
     /**
@@ -51,7 +71,12 @@ public class StringsAndThings {
      *           gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input){
-        return null;
+
+            if (input.contains("gg")) {
+                return true;
+            } else {
+                return false;
+            }
     }
 
 
@@ -63,6 +88,14 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        int result = 0;
+        String hold = "";
+        for (int i = 0;i < input.length() - 4; i++ ) {
+            hold = input.substring(i, i + 1);
+            hold = hold + hold + hold;
+            if (input.substring(i, i+3).equals(hold)) {
+                result ++;
+            }
+        } return result;
     }
 }
